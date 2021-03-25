@@ -1,8 +1,8 @@
 package goft
 
 import (
+	"fmt"
 	"reflect"
-	"testing"
 )
 
 func TestMultiply(t *testing.T) {
@@ -39,5 +39,18 @@ func TestMultiply(t *testing.T) {
 				t.Errorf("Unexpected response:\nGot: %v, Wanted: %v", actual, tt.expected)
 			}
 		})
+	}
+}
+
+func TestMatrix(t *testing.T) {
+	aData := []float32{1, 0, 0, 1}
+	a := Matrix{data: aData, dim: Dimension{rows: 2, cols: 2}}
+
+	bData := []float32{1.222, 0.123123, 0.23123, 1.33333}
+	b := Matrix{data: bData, dim: Dimension{rows: 2, cols: 2}}
+
+	m, err := a.multiply(&b)
+	if err != nil {
+		t.Fatal()
 	}
 }

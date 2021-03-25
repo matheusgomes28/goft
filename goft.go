@@ -3,7 +3,10 @@ package goft
 import "fmt"
 
 type vector []float32
-type matrix [][]float32
+
+func (m *Matrix) unsafeAt(row, col int) *float32 {
+	return &m.data[row*m.dim.cols+col]
+}
 
 // multiply two vectors of the same size together
 func (v1 vector) multiply(v2 vector) (vector, error) {

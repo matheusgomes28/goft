@@ -44,6 +44,6 @@ workflows:
     jobs:
       - fail-fast
       - build:
-        requires:
+          requires:
             - fail-fast
 

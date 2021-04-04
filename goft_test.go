@@ -3,6 +3,7 @@ package goft
 import (
 	"fmt"
 	"reflect"
+  "testing"
 )
 
 func TestMultiply(t *testing.T) {
@@ -49,8 +50,16 @@ func TestMatrix(t *testing.T) {
 	bData := []float32{1.222, 0.123123, 0.23123, 1.33333}
 	b := Matrix{data: bData, dim: Dimension{rows: 2, cols: 2}}
 
-	m, err := a.multiply(&b)
+	_, err := a.multiply(&b)
 	if err != nil {
 		t.Fatal()
 	}
+}
+
+func TestIndices(t *testing.T) {
+  aData := PartitionElements(Even, 11)
+  fmt.Printf("%v\n", aData)
+
+  bData := PartitionElements(Odd, 10)
+  fmt.Printf("%v\n", bData)
 }
